@@ -22,56 +22,13 @@ if (isset($_SESSION['id'])) {// tarkistetaan id
             <div class="column side">
             </div>
                  <div class="column middle">
-        <p>LAITEHALLINTA</p>
+        <p>HUOLTOHISTORIA</p>
 
-
-		
-		
-		
-		
-        <form action="huoltohistoria.php" method="get"> 
-            LaiteId <input type="text" name="serial" > <br>
-
-            <br><input type="submit" value="Hae" name="Hae">
-        </form><br><br>
-
-
-        <?php
-            require_once("db.inc");
-
-            if (isset($_GET["Hae"])){
-                $query = "SELECT HuoltoID, LaiteID, huoltopvm, sisaisethuomiot FROM huoltohistoria";
-				$tulos = mysqli_query($conn, $query);
-				if ( !$tulos ){
-					echo "Ei laitteita" . mysqli_error($conn);
-				}
-				
-					echo "<table border=\"1\" align=\"center\">";
-					echo "<tr><th>HuoltoID</th>";
-					echo "<th>LaiteID</th>";
-					echo "<th>PVM</th>";
-					echo "<th>Huomiot</th></tr>";
-					while ($row = mysqli_fetch_array($tulos, MYSQL_ASSOC)) { 
-						$dID = $row["HuoltoID"];
-						$dSerial = $row["LaiteID"]; 
-						$dName = $row["huoltopvm"]; 
-						$dPrice = $row["sisaisethuomiot"];
-					
-
-					
-						echo "<tr>";
-						echo "<br> " . "<td>" . $dID. "</td>". "<td>" . $dSerial. "</td>" . "<td>" . $dName. "</td>" . "<td>" . $dPrice. "</td>";
-						echo "</tr>";
-						
-            }
-					echo"</table>";
-                }
-            
-
+<a href="huoltohistoria-hae.php">Hae laitteen huoltohistoria</a>
+<a href="huoltohistoria-lisää.php">Lisää uusi huolto</a>
       
 
-        ?>
-
+        
         </div>
   <div class="column side">
   </div>
@@ -86,3 +43,5 @@ if (isset($_SESSION['id'])) {// tarkistetaan id
 ?>  
 <?php
     }
+
+    ?>
