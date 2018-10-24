@@ -15,60 +15,21 @@ if (isset($_SESSION['id'])) {// tarkistetaan id
 <html>
     <head>
         <title>rent</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
     </head>
     <body>
+    <?php include 'primary-navigation.php'; ?>
+    <div class="row">
+            <div class="column side">
+            </div>
+                 <div class="column middle">
     <p>VARAA</p>
 
-        <form action="rent.php" method="get"> 
-            <input type="submit" value="Pääsivu" name="main">
-        </form>
-        
-        <form action="rent.php" method="get"> 
-            <input type="submit" value="Omat tiedot" name="user">
-        </form>
-
-        <form action="rent.php" method="get"> 
-            <input type="submit" value="Laitteiden hallinta" name="edit">
-        </form>
-
-        <form action="rent.php" method="get"> 
-            <input type="submit" value="Varaus" name="rent">
-        </form>
-
-        <form action="rent.php" method="get"> 
-            <input type="submit" value="Kirjaudu ulos" name="logout">
-        </form>
 
         <?php
             require_once("db.inc");
 
 
-            if (isset($_GET["main"])){ // mainii
-                header('Location: main.php');
-                exit;
-            }
-
-            if (isset($_GET["user"])){ // Omat tiedoit sivulle
-                header('Location: user.php');
-                exit;
-            }
-
-            if (isset($_GET["edit"])){ // laitehallinta sivulle
-                header('Location: edit.php');
-                exit;
-            }
-
-            if (isset($_GET["rent"])){ // varaus sivulle
-                header('Location: rent.php');
-                exit;
-            }
-
-            if (isset($_GET["logout"])){ // loggaa ulos
-                session_unset();
-                session_destroy(); 
-                header('Location: login.php');
-                exit;
-            }
 
             $query = "SELECT LaiteID, Sarjanumero, Nimi, Vuokra_hinta, Laitetyyppi, varaus_tila FROM laite";
             $tulos = mysqli_query($conn, $query);
@@ -88,7 +49,10 @@ if (isset($_SESSION['id'])) {// tarkistetaan id
             
 
         ?>
-
+</div>
+  <div class="column side">
+  </div>
+</div>
     </body>
 </html>
 <?php

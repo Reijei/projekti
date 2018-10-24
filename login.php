@@ -1,12 +1,18 @@
 <html>
     <head>
         <title>Login</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
     </head>
     <body>
+<?php include 'primary-navigation.php'; ?>
+<div class="row">
+            <div class="column side">
+            </div>
+                 <div class="column middle">
 
         <form action="login.php" method="get"> 
             Tunnus: <input type="text" name="name"> <br>
-            Salasana: <input type="password" name="password"> <br>
+            Salasanasdsada: <input type="password" name="password"> <br>
             <br><input type="submit" value="Kirjaudu" name="log">
         </form>
 
@@ -45,6 +51,9 @@
 
 
         ?>
-
+</div>
+  <div class="column side">
+  </div>
+</div>
     </body>
 </html>
