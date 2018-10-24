@@ -33,6 +33,7 @@ if (isset($_SESSION['id'])) {// tarkistetaan id
   <div class="column side">
   </div>
 </div>
+<?php include 'footer.php'; ?>
     </body>
 </html>
 <?php
