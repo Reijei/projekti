@@ -100,7 +100,7 @@ if (isset($_SESSION['id'])) {// tarkistetaan id
     </body>
 </html>
 <?php
-    } else { // heittää ulos jos ideetä ei ole sessionissaasdasdasd
+    } else { // heittää ulos jos ideetä ei ole sessionissaasdasdasdasd
         header('Location: login.php');
         exit;
 ?>  
