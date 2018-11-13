@@ -1,6 +1,6 @@
 <meta charset="utf-8">
 <div class="header">
-  <h1>Laitekanta Header</h1>
+  <img src="lgo.png" alt="Industless">
   <p></p>
 </div>
 
@@ -12,5 +12,6 @@
   <a href="http://localhost/projekti3/user.php">Käyttäjä</a>
   <a href="http://localhost/projekti3/tilaukset.php">Tilaukset</a>
   <a href="http://localhost/projekti3/asiakastilaus.php">Tilaa!!1!one</a>
+  <a href="http://localhost/projekti3/logout.php">Kirjaudu ulos</a>
 
 </div>
