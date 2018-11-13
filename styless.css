@@ -1,0 +1,206 @@
+		/* Etusivu styles */
+body{
+	margin: 0;
+	padding: 0;
+	background: url(bg.jpg);
+	background-size: cover;
+	background-position: center;
+	font-family: sans-serif;
+	
+}
+
+.etusivu{
+	text-align: center;
+	
+	position: fixed;
+	top: 15%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	animation-name: load;
+	animation-duration: 0.5s;
+
+}
+
+
+
+
+.etusivu h1{
+	margin: 0;
+	padding: 0 0 10px;
+	text-align: center;
+	font-size: 60px;
+
+}
+
+.etusivu img{
+	margin: 20;
+	padding: 0 0 20px;
+
+
+}
+
+.login{
+	
+	text-align: center;
+	width: 350px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	animation-name: load;
+	animation-duration: 1.5s;
+}
+
+
+.login a{
+		margin: 0;
+	padding: 10 10 10px;
+	
+	font-size: 32px;
+	color: #FFF;
+	
+	
+}
+  .login a:hover {
+    background-color: #FFF;
+    color: black;
+  }
+.tilaa{
+	
+	text-align: center;
+	width: 350px;
+	position: absolute;
+	top: 40%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+		animation-name: load;
+	animation-duration: 1s;
+}
+
+
+.tilaa a{
+		margin: 0;
+	padding: 10 10 10px;
+	
+	font-size: 32px;
+	color: #FFF;
+	
+	
+}
+  .tilaa a:hover {
+    background-color: #FFF;
+    color: black;
+  }
+
+
+		/* Login STYLES */
+.loginbox{
+		width: 320px;
+		height: 420px;
+		background: #333;
+		color: #FFF;
+		top: 50%;
+		left: 50%;
+		position: absolute;
+		transform: translate(-50%,-50%);
+		box-sizing: border-box;
+		padding: 70px 30px;
+			animation-name: load;
+	animation-duration: 0.8s;
+}
+
+h1{
+	margin: 0;
+	padding: 0 0 20px;
+	text-align: center;
+	font-size: 22px;
+		animation-name: load;
+	animation-duration: 0.5s;
+}
+
+.loginbox p{
+	margin: 5;
+	padding: 0;
+	font-weight: bold;
+
+}
+
+.loginbox input{
+	width: 100%;
+	margin-bottom: 20px;
+
+}
+
+.etu{
+	
+		text-align: center;
+	width: 250px;
+	height: 30px;
+	position: fixed;
+	top: 100;
+	left: 100;
+		animation-name: load;
+	animation-duration: 0.5s;
+}
+.etu a{
+		margin: 0;
+	padding: 0 0 20px;
+	
+	font-size: 22px;
+	color: white;
+	
+	
+}
+
+		/* Tilaus STYLES */
+
+.tilausbox{
+		width: 520px;
+		height: 820px;
+		background: #333;
+		color: #FFF;
+		top: 50%;
+		left: 50%;
+		position: absolute;
+		transform: translate(-50%,-50%);
+		box-sizing: border-box;
+		padding: 70px 30px;
+			animation-name: load;
+	animation-duration: 0.5s;
+}
+.tilausbox h2{
+	margin: 0;
+	padding: 0 0 50px;
+	text-align: center;
+	font-size: 30px;
+}
+.tilausbox input{
+	width: 100%;
+	margin-top: 10px;
+	margin-bottom: 20px;
+	
+}
+.etusivunen{
+	
+		text-align: center;
+	width: 250px;
+	height: 30px;
+	position: fixed;
+	top: 100;
+	left: 100;
+		animation-name: load;
+	animation-duration: 0.5s;
+}
+.etusivunen a{
+		margin: 0;
+	padding: 0 0 20px;
+	
+	font-size: 22px;
+	color: white;
+	
+	
+}
+@keyframes load {
+	0% {opacity: 0; top:0px;}
+	100% {opacity: 1;}
+}
