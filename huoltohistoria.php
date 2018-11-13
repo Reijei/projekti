@@ -25,7 +25,7 @@ if (isset($_SESSION['id'])) {// tarkistetaan id
         <p>HUOLTOHISTORIA</p>
 
 <a href="huoltohistoria-hae.php">Hae laitteen huoltohistoria</a>
-<a href="huoltohistoria-lisää.php">Lisää uusi huolto</a>
+<a href="huoltohistoria-lisaa.php">Lisää uusi huolto</a>
       
 
         
