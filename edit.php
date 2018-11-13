@@ -83,8 +83,11 @@ if (isset($_SESSION['id'])) {// tarkistetaan id
                 $dType = $row["Laitetyyppi"];
                 $dCond = $row["varaus_tila"];
 
-                echo "<br> " . $dID. " " . $dSerial. " " . $dName. " " . $dPrice . " " . $dType. " " . $dCond;
+                echo '<form method="post">';
+                echo " " . $dID. " " . $dSerial. " " . $dName. " " . $dPrice . " " . $dType. " " . $dCond . " " . '<button name="mod" value='.$dID.' type="submit">modify</button>';
+                echo '</form>';
             }
+
 
 
 
