@@ -54,7 +54,7 @@ if (isset($_SESSION['id'])) {// tarkistetaan id
                     $sql = "SELECT * FROM laite WHERE Sarjanumero = '$serial'";
                     $result = mysqli_query($conn, $sql);
                     if( mysqli_num_rows($result) > 0 ){
-                        echo "Tällä sarjanumerolla on jo rekisteröity laite";
+                        echo "Tällä sarjanumerolla on jo rekisteröity laite <br><br>";
                     }
                     else{
                         $sql = "INSERT INTO laite (Sarjanumero, Nimi, Vuokra_hinta, Laitetyyppi, varaus_tila)
@@ -71,11 +71,11 @@ if (isset($_SESSION['id'])) {// tarkistetaan id
             }
 
             $query = "SELECT LaiteID, Sarjanumero, Nimi, Vuokra_hinta, Laitetyyppi, varaus_tila FROM laite";
-            $tulos = mysqli_query($conn, $query);
-            if ( !$tulos ){
+            //$tulos = mysqli_query($conn, $query);
+            if ( !$result = $conn->query($query) ){
                 echo "Ei laitteita" . mysqli_error($conn);
             }
-            while ($row = mysqli_fetch_array($tulos, MYSQL_ASSOC)) { 
+            while ($row = $result->fetch_assoc()) { 
                 $dID = $row["LaiteID"];
                 $dSerial = $row["Sarjanumero"]; 
                 $dName = $row["Nimi"]; 
@@ -88,7 +88,9 @@ if (isset($_SESSION['id'])) {// tarkistetaan id
                 echo '</form>';
             }
 
-
+            if (isset($_POST["mod"])){
+                
+            }
 
 
         ?>

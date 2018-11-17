@@ -32,11 +32,10 @@ if (isset($_SESSION['id'])) {// tarkistetaan id
 
 
             $query = "SELECT LaiteID, Sarjanumero, Nimi, Vuokra_hinta, Laitetyyppi, varaus_tila FROM laite";
-            $tulos = mysqli_query($conn, $query);
-            if ( !$tulos ){
+            if ( !$result = $conn->query($query) ){
                 echo "Ei laitteita" . mysqli_error($conn);
             }
-            while ($row = mysqli_fetch_array($tulos, MYSQL_ASSOC)) { 
+            while ($row = $result->fetch_assoc()) { 
                 $dID = $row["LaiteID"];
                 $dSerial = $row["Sarjanumero"]; 
                 $dName = $row["Nimi"]; 
