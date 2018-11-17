@@ -1,34 +1,24 @@
-<?php
-session_start(); // sessioni ylös
 
-if (isset($_SESSION['id'])) {// tarkistetaan id 
-    $id = $_SESSION['id'];
-    require_once("db.inc");
-    $sql = "SELECT * FROM admin WHERE admin_ID = '$id'";
-    $result = mysqli_query($conn, $sql);
-    while ($row = $result->fetch_assoc()) {
-        $name = $row["tunnus"];
-    }
-?>
 <html>
 <meta charset="utf-8">
     <head>
-        <title>Asiakas</title>
-        <link rel="stylesheet" type="text/css" href="style.css">
+        <title>Tilaus</title>
+        <link rel="stylesheet" type="text/css" href="styless.css">
     </head>
     <body>
-    <?php include 'primary-navigation.php'; ?>
+    <?php //include 'primary-navigation.php'; ?>
     <div class="row">
-            <div class="column side">
+            <div class="etusivunen">
+			<a href="http://localhost/projekti3/etusivu.php">Etusivu</a>
             </div>
-                 <div class="column middle">
-        <p>Uusi tilaus</p>
+                 <div class="tilausbox">
+        <h2>Uusi tilaus</h2>
 
 <!-- Tämä sivu näkyy tulevaisuudessa vain ASIAKKAALLE! -->
 
         <form action="asiakastilaus.php" method="get"> 
-            Asiakkaan nimi:	<input type="text" name="customerName" > <br>
-			Asiakkaan s-posti: <input type="text" name="customerEmail" > <br>
+            Nimi:	<input type="text" name="customerName" > <br>
+			Sähköposti: <input type="text" name="customerEmail" > <br>
             Yrityksen nimi: <input type="text" name="customerCompany"> <br>
             Yrityksen osoite: <input type="text" name="customerAddress"> <br>
             Vapaamuotoinen puhdistimen tilaus: <input type="text" name="customerOrder"> <br>
@@ -81,10 +71,8 @@ if (isset($_SESSION['id'])) {// tarkistetaan id
 <?php include 'footer.php'; ?>
     </body>
 </html>
-<?php
+<?php/*
     } else { // heittää ulos jos ideetä ei ole sessionissa
         header('Location: login.php');
         exit;
-?>  
-<?php
-    }
+*/?>  

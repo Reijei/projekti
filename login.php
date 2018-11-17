@@ -1,18 +1,22 @@
 <html>
+<meta charset="UTF-8">
     <head>
         <title>Login</title>
-        <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="stylesheet" type="text/css" href="styless.css">
     </head>
     <body>
-<?php include 'primary-navigation.php'; ?>
-<div class="row">
-            <div class="column side">
-            </div>
-                 <div class="column middle">
+<?php //include 'primary-navigation.php'; ?>
 
+            <div class="etu">
+			<a href="http://localhost/projekti3/etusivu.php">Palaa takaisin</a>
+            </div>
+                 <div class="loginbox">
+		<h1>Kirjaudu sisään</h1>
         <form action="login.php" method="get"> 
-            Tunnus: <input type="text" name="name"> <br>
-            Salasanasdsada: <input type="password" name="password"> <br>
+            <p>Tunnus</p>
+				<input type="text" name="name" placeholder="Syötä tunnus"> <br>
+            <p>Salasana</p>
+				<input type="password" name="password" placeholder="Syötä salasana"> <br>
             <br><input type="submit" value="Kirjaudu" name="log">
         </form>
 
@@ -54,7 +58,7 @@
 </div>
   <div class="column side">
   </div>
-</div>
+
 <?php include 'footer.php'; ?>
     </body>
 </html>
