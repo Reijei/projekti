@@ -21,7 +21,8 @@
 			Sähköposti: <input type="text" name="customerEmail" > <br>
             Yrityksen nimi: <input type="text" name="customerCompany"> <br>
             Yrityksen osoite: <input type="text" name="customerAddress"> <br>
-            Vapaamuotoinen puhdistimen tilaus: <input type="text" name="customerOrder"> <br>
+            Vapaamuotoinen puhdistimen tilaus: <br><br>
+			<textarea rows="5" cols="40" type="text" name="customerOrder"> </textarea><br>
            
 
             <br><input type="submit" value="Tilaa" name="add">

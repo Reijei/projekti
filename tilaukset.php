@@ -15,12 +15,22 @@ if (isset($_SESSION['id'])) {// tarkistetaan id
     <head>
         <title>Edit</title>
         <link rel="stylesheet" type="text/css" href="style.css">
+		<style>
+#infoBOX {
+    width: 40%;
+    padding: 5px 0;
+    text-align: center;
+    background-color: #87CEEB;
+    margin-top: 10px;
+	font-size: 15px;
+}
+</style>
     </head>
     <body>
     <?php include 'primary-navigation.php'; ?>
     <div class="row">
-            <div class="column side">
-            </div>
+             <div class="column side">
+  </div>
                  <div class="column middle">
         <h1>Tilaukset</h1>
 
@@ -45,8 +55,12 @@ if (isset($_SESSION['id'])) {// tarkistetaan id
                 $cCompanyAddress = $row["asiakasYritysOsoite"];
                 $cOrder = $row["asiakasHakemus"];
                 
-
-                echo "<br> " . $cName. " " . $cEmail. " " . $cCompany. " " . $cCompanyAddress . "<br> " . $cOrder . "<br>";
+				
+				
+				echo '<br><b> ' . $cName. '</b><br><br> <div id="infoBOX"><p><i> </i>' . $cEmail. '</p><p><i>- </i>' . $cCompany. '<br>'. $cCompanyAddress.'</p><br><font size="2"><i><b>"' . $cOrder. '"</b></i></font></div>';
+                
+				
+				
             }
 
 
@@ -54,9 +68,12 @@ if (isset($_SESSION['id'])) {// tarkistetaan id
         ?>
 </div>
   <div class="column side">
+  
   </div>
 </div>
 <?php include 'footer.php'; ?>
+
+
     </body>
 </html>
 <?php
