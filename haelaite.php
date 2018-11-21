@@ -21,7 +21,7 @@ if (isset($_SESSION['id'])) {// tarkistetaan id
             <div class="column side">
             </div>
                  <div class="column middle">
-        <p>LAITEHALLINTA</p>
+        <h1>LAITEHALLINTA</h1>
 
         <?php
             require_once("db.inc");
@@ -31,6 +31,15 @@ if (isset($_SESSION['id'])) {// tarkistetaan id
             if ( !$result = $conn->query($query) ){
                 echo "Ei laitteita" . mysqli_error($conn);
             }
+
+            echo "<table border=\"1\" align=\"center\">";
+            echo "<tr><th>ID</th>";
+            echo "<th>Sarjanumero</th>";
+            echo "<th>Nimi</th>";
+            echo "<th>Hinta</th>";
+            echo "<th>Laitetyyppi</th>";
+            echo "<th>Varaus tila</th>";
+            echo "<th>Muokkaa tietoja</th></tr>";
             while ($row = $result->fetch_assoc()) { 
                 $dID = $row["LaiteID"];
                 $dSerial = $row["Sarjanumero"]; 
@@ -40,9 +49,16 @@ if (isset($_SESSION['id'])) {// tarkistetaan id
                 $dCond = $row["varaus_tila"];
 
                 echo '<form method="post">';
-                echo " " . $dID. " " . $dSerial. " " . $dName. " " . $dPrice . " " . $dType. " " . $dCond . " " . '<button name="mod" value='.$dID.' type="submit">modify</button>';
+                echo "<tr>";
+                echo "<br>" . "<td>" . $dID. "</td>" . "<td>" . $dSerial. "</td>" . "<td>" . $dName. "</td>" . "<td>" . $dPrice . "</td>" . "<td>" . $dType. "</td>" . "<td>" . $dCond . "</td>" . "<td>" . '<button name="mod" value='.$dID.' type="submit">Muokkaa</button>' . "</td>";
+                echo "</tr>";
                 echo '</form>';
+
+               
+		echo "<br> " . "<td>" . $dID. "</td>". "<td>" . $dSerial. "</td>" . "<td>" . $dName. "</td>" . "<td>" . $dPrice. "</td>";
+					
             }
+            echo"</table>";
 
             if (isset($_POST["mod"])){
                 $moID = $_POST["mod"];
