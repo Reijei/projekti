@@ -138,6 +138,30 @@ INSERT INTO `laite` (`LaiteID`, `Sarjanumero`, `Nimi`, `Vuokra_hinta`, `Laitetyy
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `asiakastilaus`
+--
+
+CREATE TABLE IF NOT EXISTS `asiakastilaus` (
+  `asiakasNimi` varchar(25) NOT NULL,
+  `asiakasSposti` varchar(25) NOT NULL,
+  `asiakasYritys` varchar(25) NOT NULL,
+  `asiakasYritysOsoite` varchar(25) NOT NULL,
+  `asiakasHakemus` varchar(500) NOT NULL,
+  PRIMARY KEY (`asiakasNimi`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `asiakastilaus`
+--
+
+INSERT INTO `asiakastilaus` (`asiakasNimi`, `asiakasSposti`, `asiakasYritys`, `asiakasYritysOsoite`, `asiakasHakemus`) VALUES
+('ABC', 'ABC@ABC.ABC', 'Savonia AMK', 'Opistotie 2', 'Tilaisin puhdistimen.');
+
+
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tilaus`
 --
 
@@ -162,6 +186,8 @@ CREATE TABLE IF NOT EXISTS `tilaus` (
   KEY `AsiakasID` (`AsiakasID`),
   KEY `LaiteID` (`LaiteID`)
 ) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+
 
 --
 -- Dumping data for table `tilaus`
