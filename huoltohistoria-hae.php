@@ -22,7 +22,7 @@ if (isset($_SESSION['id'])) {// tarkistetaan id
             <div class="column side">
             </div>
                  <div class="column middle">
-        <p>LAITEHALLINTA</p>
+        <h1>HUOLTOHISTORIA - HAE</h1>
 
 
 
