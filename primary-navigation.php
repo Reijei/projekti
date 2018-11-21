@@ -14,6 +14,7 @@
   <a href="http://localhost/projekti3/tilaukset.php">Tilaukset</a>
   <a href="http://localhost/projekti3/asiakastilaus.php">Tilaa</a>
   <a href="http://localhost/projekti3/asiakkaanlisays.php">Uusi asiakas</a>
+  <a href="http://localhost/projekti3/register.php">Uusi tunnus</a>
   <a href="http://localhost/projekti3/logout.php">Kirjaudu ulos</a>
 
 </div>
