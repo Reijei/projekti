@@ -23,7 +23,7 @@ if (isset($_SESSION['id'])) {// tarkistetaan id
             <div class="column side">
             </div>
                  <div class="column middle">
-    <p>VARAA</p>
+    <h1>VARAA</h1>
 
         <?php
             require_once("db.inc");

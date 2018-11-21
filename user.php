@@ -23,7 +23,7 @@ if (isset($_SESSION['id'])) {// tarkistetaan id
             <div class="column side">
             </div>
                  <div class="column middle">
-    <p>OMAT TIEDOT</p>
+    <h1>OMAT TIEDOT</h1>
 
 
 

@@ -14,6 +14,8 @@ if (isset($_SESSION['id'])) {// tarkistetaan id
     <head>
         <title>Edit</title>
         <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
     </head>
     <body>
     <?php include 'primary-navigation.php'; ?>
@@ -50,12 +52,12 @@ if (isset($_SESSION['id'])) {// tarkistetaan id
 
                 echo '<form method="post">';
                 echo "<tr>";
-                echo "<br>" . "<td>" . $dID. "</td>" . "<td>" . $dSerial. "</td>" . "<td>" . $dName. "</td>" . "<td>" . $dPrice . "</td>" . "<td>" . $dType. "</td>" . "<td>" . $dCond . "</td>" . "<td>" . '<button name="mod" value='.$dID.' type="submit">Muokkaa</button>' . "</td>";
+                echo "<br>" . "<td>" . $dID. "</td>" . "<td>" . $dSerial. "</td>" . "<td>" . $dName. "</td>" . "<td>" . $dPrice . "</td>" . "<td>" . $dType. "</td>" . "<td>" . $dCond . "</td>" . "<td>" . '<button class="btn" name="mod" value='.$dID.' type="submit"><i class="fas fa-edit"></i> Muokkaa</button>' . "</td>";
                 echo "</tr>";
                 echo '</form>';
 
                
-		echo "<br> " . "<td>" . $dID. "</td>". "<td>" . $dSerial. "</td>" . "<td>" . $dName. "</td>" . "<td>" . $dPrice. "</td>";
+		
 					
             }
             echo"</table>";

@@ -21,7 +21,7 @@ if (isset($_SESSION['id'])) {// tarkistetaan id
             <div class="column side">
             </div>
                  <div class="column middle">
-        <p>LAITEHALLINTA</p>
+        <h1>LAITEHALLINTA</h1>
 
 
 
@@ -30,7 +30,7 @@ if (isset($_SESSION['id'])) {// tarkistetaan id
             Nimi: <input type="text" name="devName"> <br>
             Vuokra/kk: <input type="text" name="price"> <br>
             Laitetyyppi: <input type="text" name="type"> <br>
-            Tila: <input type="radio" name="cond" value="varattu">Varattu
+            Tila: <input type="radio" name="cond" value="varattu">Vuokrattu
             <input type="radio" checked="checked" name="cond" value="vapaa">Vapaa
 
             <br><input type="submit" value="Kirjaa laite" name="add">
