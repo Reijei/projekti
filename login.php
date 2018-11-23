@@ -51,7 +51,7 @@
                         exit;
                         } else if ($usertype == "user") 
                         {
-                            header('Location: etusivu.php');
+                            header('Location: user-main.php');
                             exit;
                         }
                     }
