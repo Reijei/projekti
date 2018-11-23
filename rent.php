@@ -77,10 +77,23 @@ if (isset($_SESSION['id'])) {// tarkistetaan id
                         $query = "SELECT LaiteID, Sarjanumero, Nimi, Vuokra_hinta, Laitetyyppi, varaus_tila FROM laite";
                         if ( !$result = $conn->query($query) ){
                             echo "Ei laitteita" . mysqli_error($conn);
-                        } 
-                        while ($row = $result->fetch_assoc()) {
-                            echo "<br> <input type='checkbox' name='laite' value='".$row['LaiteID']."' /> ".$row['Sarjanumero']. " " .$row['Nimi'];
                         }
+                        
+                        echo "<table border=\"1\" align=\"center\">";
+				        echo "<tr><th>Check</th>";
+					    echo "<th>Sarjanumero</th>";
+					    echo "<th>Nimi</th></tr>";
+                        while ($row = $result->fetch_assoc()) {
+                            echo "<tr>";
+                            echo "<br> " . "<td>" . "<input type='radio' name='laite' value='".$row['LaiteID']."' />". "</td>". "<td>" .$row['Sarjanumero']. "</td>". "<td>" .$row['Nimi'] . "</td>";
+                            echo "</tr>";
+
+
+               
+
+						
+                        }
+                        echo"</table>";
                     ?>
                     <br><input type="submit" value="Tallenna muutokset" name="saveRent">
                 </form><br><br>
@@ -101,6 +114,9 @@ if (isset($_SESSION['id'])) {// tarkistetaan id
                 $os = $_GET["osasto"];
                 $ti = $_GET["tilatunniste"];
                 $laiteID = $_GET["laite"];
+                if(count(array_filter($_GET))!=count($_GET)){
+                    echo '<p class="validation-text">Täytä kaikki kentät</p>';
+                } else {
 
                 $sql = "INSERT INTO tilaus (AsiakasID, LaiteID, alkpvm, loppupvm, tilaajan_puh, kesto, kohteen_nimi, postinumero, toimipaikka, kohteen_yht, osasto, tilatunniste)
                     VALUES ('$aID', '$laiteID', '$ap', '$lp', '$puh','$k', '$ko','$po','$to','$koy','$os','$ti')";
@@ -110,7 +126,7 @@ if (isset($_SESSION['id'])) {// tarkistetaan id
                     echo "Error: " . $sql . "<br>" . $conn->error;
                 }
             }
-
+        }
             echo '<form method="get">';
             echo '<br><br><button class="btn" name="addC" type="submit">Lisää Asiakas</button>';
             echo '</form>';
@@ -137,7 +153,7 @@ if (isset($_SESSION['id'])) {// tarkistetaan id
 
             if (isset($_GET["addCust"])){
                 if(count(array_filter($_GET))!=count($_GET)){
-                    echo "Täytä kaikki kentät";
+                    echo '<p class="validation-text">Täytä kaikki kentät</p>';
                 }
                 else{
                     $as= $_GET["Asiakas"];

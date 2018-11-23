@@ -41,11 +41,19 @@
                         $result = mysqli_query($conn, $sql);
                         while ($row = $result->fetch_assoc()) {
                             $id = $row["admin_ID"];
+                            $usertype = $row["usertype"];
                         }
                         $_SESSION['id'] = $id; // tallennus sessionii 
                         echo $id;
+                        echo $usertype;
+                        if ($usertype == "admin") {
                         header('Location: main.php');
                         exit;
+                        } else if ($usertype == "user") 
+                        {
+                            header('Location: etusivu.php');
+                            exit;
+                        }
                     }
                     else{
                         echo "Tunnus tai salasana on väärin, syötä uudelleen";

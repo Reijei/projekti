@@ -59,6 +59,11 @@ div {
   justify-content: center;
 }
 
+.validation-text {
+  color: red;
+  font-size: 50px;
+}
+
 .btn:hover {
   background-color: #428bca;
 }

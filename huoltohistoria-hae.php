@@ -49,7 +49,7 @@ if (isset($_SESSION['id'])) {// tarkistetaan id
 					echo "<th>LaiteID</th>";
 					echo "<th>PVM</th>";
 					echo "<th>Huomiot</th></tr>";
-					while ($row = mysqli_fetch_array($tulos, MYSQL_ASSOC)) { 
+					while ($row = $tulos->fetch_assoc()) { 
 						$dID = $row["HuoltoID"];
 						$dSerial = $row["LaiteID"]; 
 						$dName = $row["huoltopvm"]; 

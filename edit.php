@@ -41,7 +41,7 @@ if (isset($_SESSION['id'])) {// tarkistetaan id
 
             if (isset($_GET["add"])){
                 if(count(array_filter($_GET))!=count($_GET)){
-                    echo "Täytä kaikki kentät";
+                    echo '<p class="validation-text">Täytä kaikki kentät</p>';
                 }
                 else{
                     $serial= $_GET["serial"];
@@ -70,23 +70,7 @@ if (isset($_SESSION['id'])) {// tarkistetaan id
                 }
             }
 
-            $query = "SELECT LaiteID, Sarjanumero, Nimi, Vuokra_hinta, Laitetyyppi, varaus_tila FROM laite";
-            //$tulos = mysqli_query($conn, $query);
-            if ( !$result = $conn->query($query) ){
-                echo "Ei laitteita" . mysqli_error($conn);
-            }
-            while ($row = $result->fetch_assoc()) { 
-                $dID = $row["LaiteID"];
-                $dSerial = $row["Sarjanumero"]; 
-                $dName = $row["Nimi"]; 
-                $dPrice = $row["Vuokra_hinta"];
-                $dType = $row["Laitetyyppi"];
-                $dCond = $row["varaus_tila"];
 
-                echo '<form method="post">';
-                echo " " . $dID. " " . $dSerial. " " . $dName. " " . $dPrice . " " . $dType. " " . $dCond . " " ;
-                echo '</form>';
-            }
 
             if (isset($_POST["mod"])){
                 
