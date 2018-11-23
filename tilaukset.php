@@ -48,6 +48,7 @@ if (isset($_SESSION['id'])) {// tarkistetaan id
             if ( !$tulos ){
                 echo "Ei tilauksia" . mysqli_error($conn);
             }
+            ?> <div class="tilaukset-content"> <?php
             while ($row = $tulos->fetch_assoc()) { 
                 $cName = $row["asiakasNimi"];
                 $cEmail = $row["asiakasSposti"]; 
@@ -57,12 +58,12 @@ if (isset($_SESSION['id'])) {// tarkistetaan id
                 
 				
 				
-				echo '<br><b> ' . $cName. '</b><br><br> <div id="infoBOX"><p><i> </i>' . $cEmail. '</p><p><i>- </i>' . $cCompany. '<br>'. $cCompanyAddress.'</p><br><font size="2"><i><b>"' . $cOrder. '"</b></i></font></div>';
+				echo '<br><div id="infoBOX"><b> ' . $cName. '</b><br><br><p><i> </i>' . $cEmail. '</p><p><i>- </i>' . $cCompany. '<br>'. $cCompanyAddress.'</p><br><font size="2"><i><b>"' . $cOrder. '"</b></i></font></div>';
                 
 				
 				
             }
-
+?>  </div> <?php
 
 
         ?>

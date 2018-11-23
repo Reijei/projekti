@@ -36,14 +36,25 @@ if (isset($_SESSION['id'])) {// tarkistetaan id
                 echo "Ei asiakkaista" . mysqli_error($conn);
             }
             echo "Asiakkaat<br><br>";
+
+            echo "<table border=\"1\" align=\"center\">";
+            echo "<tr><th>Asiakas ID</th>";
+            echo "<th>Asiakas</th>";
+            echo "<th>Lisää vuokraus</th></tr>";
             while ($row = $result->fetch_assoc()) { 
                 $aID = $row["AsiakasID"];
                 $a = $row["Asiakas"]; 
 
                 echo '<form method="get">';
-                echo " " . $aID. " " . $a . ' <button name="addRent" value='.$aID.' type="submit">Lisää Vuokraus</button>';
+                echo "<tr>";
+                echo "<br>" . "<td>" . $aID. "</td>" . "<td>" . $a . "</td>" . "<td>" . ' <button class="btn" name="addRent" value='.$aID.' type="submit">Lisää Vuokraus</button>' . "</td>";
+                echo "</tr>";
                 echo '</form>';
-            }
+
+
+
+            } 
+            echo"</table>";
 
             if (isset($_GET["addRent"])) {
                 $aID = $_GET["addRent"];
@@ -101,7 +112,7 @@ if (isset($_SESSION['id'])) {// tarkistetaan id
             }
 
             echo '<form method="get">';
-            echo '<br><br><button name="addC" type="submit">Lisää Asiakas</button>';
+            echo '<br><br><button class="btn" name="addC" type="submit">Lisää Asiakas</button>';
             echo '</form>';
 
             if (isset($_GET["addC"])){
