@@ -48,7 +48,7 @@ if (isset($_SESSION['id'])) {// tarkistetaan id
             if ( !$tulos ){
                 echo "Ei tilauksia" . mysqli_error($conn);
             }
-            while ($row = mysqli_fetch_array($tulos, MYSQL_ASSOC)) { 
+            while ($row = $tulos->fetch_assoc()) { 
                 $cName = $row["asiakasNimi"];
                 $cEmail = $row["asiakasSposti"]; 
                 $cCompany = $row["asiakasYritys"]; 
