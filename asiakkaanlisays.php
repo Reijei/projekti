@@ -21,7 +21,7 @@ if (isset($_SESSION['id'])) {// tarkistetaan id
             <div class="column side">
             </div>
                  <div class="column middle">
-        <p>ASIAKKAAN LISÄYS</p>
+        <h1>ASIAKKAAN LISÄYS</h1>
 
 
 
@@ -37,7 +37,7 @@ if (isset($_SESSION['id'])) {// tarkistetaan id
 			Vakuuttaja: <input type="text" name="vakuuttaja"> <br>
 			Yhteyshenkilö: <input type="text" name="yhteyshenkilo"> <br>
 
-            <br><input type="submit" value="Kirjaa laite" name="add">
+            <br><input type="submit" value="Lisää asiakas" name="add">
         </form><br><br>
 
         <?php

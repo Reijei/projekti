@@ -28,7 +28,7 @@ if (isset($_SESSION['id'])) {// tarkistetaan id
 
 
         <form action="huoltohistoria-hae.php" method="get"> 
-            LaiteId <input type="text" name="serial" > <br>
+            Laite ID <input type="text" name="serial" > <br>
 
             <br><input type="submit" value="Hae" name="Hae">
         </form><br><br>
