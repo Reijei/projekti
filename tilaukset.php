@@ -17,12 +17,12 @@ if (isset($_SESSION['id'])) {// tarkistetaan id
         <link rel="stylesheet" type="text/css" href="style.css">
 		<style>
 #infoBOX {
-    width: 40%;
-    padding: 5px 0;
+    width: 100%;
+    padding: 5px 5px;
     text-align: center;
     background-color: #87CEEB;
-    margin-top: 10px;
-	font-size: 15px;
+    margin-top: 5px;
+	font-size: 16px;
 }
 </style>
     </head>
