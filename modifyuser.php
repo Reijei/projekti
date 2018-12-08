@@ -109,10 +109,10 @@ if (isset($_SESSION['id'])) {// tarkistetaan id
                         $devName = $_GET["devName"];
                         $price = $_GET["price"];
                         $type = $_GET["type"];
-                        $sql = "UPDATE admin SET admin_id = $serial, tunnus = '$devName', salasana = $price, email = '$type', usertype = '$cond' WHERE admin_id = $modID";
+                        $sql = "UPDATE admin SET tunnus = '$serial', salasana = $devName, email = '$price', usertype = '$type' WHERE admin_id = '$modID'";
     
                         if ($conn->query($sql) === TRUE) {
-                            echo "Laite päivitetty <br><br>";
+                            echo "käyttäjä päivitetty <br><br>";
                         } else {
                             echo "Error: " . $sql . "<br>" . $conn->error;
                         }

@@ -61,18 +61,18 @@ if (isset($_SESSION['id'])) {// tarkistetaan id
                 ?>
 
                 <form action="rent.php" method="get"> 
-                    AsiakasID: <input type="text" name="ID" value="<?php echo htmlspecialchars($aID); ?>" readonly> <br>
-                    Alkupäivämäärä: <input type="text" name="alkpvm"> <br>
-                    LoppuPäivämäärä: <input type="text" name="loppvm" > <br>
+                    Asiakas ID: <input type="text" name="ID" value="<?php echo htmlspecialchars($aID); ?>" readonly> <br>
+                    Alkamis päivämäärä: <input type="text" name="alkpvm"> <br>
+                    Loppumis päivämäärä: <input type="text" name="loppvm" > <br>
                     Puhelinnumero: <input type="text" name="puh"> <br>
-                    Kesto: <input type="text" name="kesto"> <br>
-                    Kohteen Nimi: <input type="text" name="kohde"> <br>
+                    Kesto yhteensä: <input type="text" name="kesto"> <br>
+                    Kohteen nimi: <input type="text" name="kohde"> <br>
                     Postinumero: <input type="text" name="postinumero"> <br>
                     Toimipaikka: <input type="text" name="toimipaikka"> <br>
-                    Kohteen yht: <input type="text" name="kohyhd"> <br>
+                    Kohteen yhteystiedot: <input type="text" name="kohyhd"> <br>
                     Osasto: <input type="text" name="osasto"> <br>
                     Tilatunniste: <input type="text" name="tilatunniste"> <br>
-                    Laite:
+                    Valitse laite:
                     <?php 
                         $query = "SELECT LaiteID, Sarjanumero, Nimi, Vuokra_hinta, Laitetyyppi, varaus_tila FROM laite";
                         if ( !$result = $conn->query($query) ){
@@ -127,13 +127,11 @@ if (isset($_SESSION['id'])) {// tarkistetaan id
                 }
             }
         }
-            echo '<form method="get">';
-            echo '<br><br><button class="btn" name="addC" type="submit">Lisää Asiakas</button>';
-            echo '</form>';
+
 
             if (isset($_GET["addC"])){
                 ?>
-
+                
                 <form action="rent.php" method="get"> 
                     Asiakas: <input type="text" name="Asiakas"> <br>
                     Asiakasluokitus: <input type="text" name="Asiakasluokitus" > <br>

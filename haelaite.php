@@ -25,10 +25,59 @@ if (isset($_SESSION['id'])) {// tarkistetaan id
                  <div class="column middle">
         <h1>LAITEHALLINTA</h1>
 
+        <p>Etsi laite sarjanumerolla:</p>
+
+                <form action="haelaite.php" method="get"> 
+            Sarjanumero <input type="text" name="serial" > <br>
+
+            <br><input type="submit" value="Hae" name="Hae">
+        </form><br><br>
+
+
         <?php
             require_once("db.inc");
 
-            $query = "SELECT LaiteID, Sarjanumero, Nimi, Vuokra_hinta, Laitetyyppi, varaus_tila FROM laite";
+            if (isset($_GET["Hae"])){
+                $serial= $_GET["serial"];
+                $query = "SELECT LaiteID, Sarjanumero, Nimi, Vuokra_hinta, Laitetyyppi, varaus_tila, seuraavahuolto FROM laite WHERE Sarjanumero = '$serial'";
+				$tulos = mysqli_query($conn, $query);
+				if ( !$tulos ){
+					echo "Ei laitteita" . mysqli_error($conn);
+				}
+				
+                echo "<table border=\"1\" align=\"center\">";
+                echo "<tr><th>ID</th>";
+                echo "<th>Sarjanumero</th>";
+                echo "<th>Nimi</th>";
+                echo "<th>Hinta</th>";
+                echo "<th>Laitetyyppi</th>";
+                echo "<th>Varaus tila</th>";
+                echo "<th>Seuraava huolto</th>";
+                echo "<th>Muokkaa tietoja</th></tr>";
+					while ($row = $tulos->fetch_assoc()) { 
+                        $dID = $row["LaiteID"];
+                        $dSerial = $row["Sarjanumero"]; 
+                        $dName = $row["Nimi"]; 
+                        $dPrice = $row["Vuokra_hinta"];
+                        $dType = $row["Laitetyyppi"];
+                        $dCond = $row["varaus_tila"];
+                        $huolto = $row["seuraavahuolto"];
+					
+                        echo '<form method="post">';
+                        echo "<tr>";
+                        echo "<br>" . "<td>" . $dID. "</td>" . "<td>" . $dSerial. "</td>" . "<td>" . $dName. "</td>" . "<td>" . $dPrice . "</td>" . "<td>" . $dType. "</td>" . "<td>" . $dCond . "<td>" . $huolto . "</td>" . "</td>" . "<td>" . '<button class="btn" name="mod" value='.$dID.' type="submit"><i class="fas fa-edit"></i> Muokkaa</button>' . "</td>";
+                        echo "</tr>";
+                        echo '</form>';
+						
+            }
+					echo"</table>";
+                }
+                ?>
+
+        <?php
+            require_once("db.inc");
+
+            $query = "SELECT LaiteID, Sarjanumero, Nimi, Vuokra_hinta, Laitetyyppi, varaus_tila, seuraavahuolto FROM laite";
             //$tulos = mysqli_query($conn, $query);
             if ( !$result = $conn->query($query) ){
                 echo "Ei laitteita" . mysqli_error($conn);
@@ -41,6 +90,7 @@ if (isset($_SESSION['id'])) {// tarkistetaan id
             echo "<th>Hinta</th>";
             echo "<th>Laitetyyppi</th>";
             echo "<th>Varaus tila</th>";
+            echo "<th>Seuraava huolto</th>";
             echo "<th>Muokkaa tietoja</th></tr>";
             while ($row = $result->fetch_assoc()) { 
                 $dID = $row["LaiteID"];
@@ -49,10 +99,11 @@ if (isset($_SESSION['id'])) {// tarkistetaan id
                 $dPrice = $row["Vuokra_hinta"];
                 $dType = $row["Laitetyyppi"];
                 $dCond = $row["varaus_tila"];
+                $huolto = $row["seuraavahuolto"];
 
                 echo '<form method="post">';
                 echo "<tr>";
-                echo "<br>" . "<td>" . $dID. "</td>" . "<td>" . $dSerial. "</td>" . "<td>" . $dName. "</td>" . "<td>" . $dPrice . "</td>" . "<td>" . $dType. "</td>" . "<td>" . $dCond . "</td>" . "<td>" . '<button class="btn" name="mod" value='.$dID.' type="submit"><i class="fas fa-edit"></i> Muokkaa</button>' . "</td>";
+                echo "<br>" . "<td>" . $dID. "</td>" . "<td>" . $dSerial. "</td>" . "<td>" . $dName. "</td>" . "<td>" . $dPrice . "</td>" . "<td>" . $dType. "</td>" . "<td>" . $dCond . "<td>" . $huolto . "</td>" . "</td>" . "<td>" . '<button class="btn" name="mod" value='.$dID.' type="submit"><i class="fas fa-edit"></i> Muokkaa</button>' . "</td>";
                 echo "</tr>";
                 echo '</form>';
 
@@ -64,7 +115,7 @@ if (isset($_SESSION['id'])) {// tarkistetaan id
 
             if (isset($_POST["mod"])){
                 $moID = $_POST["mod"];
-                $query = "SELECT LaiteID, Sarjanumero, Nimi, Vuokra_hinta, Laitetyyppi, varaus_tila FROM laite WHERE LaiteID = $moID";
+                $query = "SELECT LaiteID, Sarjanumero, Nimi, Vuokra_hinta, Laitetyyppi, varaus_tila, seuraavahuolto FROM laite WHERE LaiteID = $moID";
                 if ( !$result = $conn->query($query) ){
                     echo "Ei laitteita" . mysqli_error($conn);
                 } 
@@ -75,6 +126,7 @@ if (isset($_SESSION['id'])) {// tarkistetaan id
                     $modPrice = $row["Vuokra_hinta"];
                     $modType = $row["Laitetyyppi"];
                     $modCond = $row["varaus_tila"];
+                    $huolto = $row["seuraavahuolto"];
                 }
 
                 ?>
@@ -84,6 +136,7 @@ if (isset($_SESSION['id'])) {// tarkistetaan id
                     Nimi: <input type="text" name="devName" value="<?php echo htmlspecialchars($modName); ?>"> <br>
                     Vuokra/kk: <input type="text" name="price" value="<?php echo htmlspecialchars($modPrice); ?>"> <br>
                     Laitetyyppi: <input type="text" name="type" value="<?php echo htmlspecialchars($modType); ?>"> <br>
+                    Seuraava Huolto: <input type="text" name="huolto" value="<?php echo htmlspecialchars($huolto); ?>"> <br>
                     Tila: <input type="radio" name="cond" value="varattu" >Varattu
                     <input type="radio" checked="checked" name="cond" value="vapaa">Vapaa
     
@@ -105,7 +158,8 @@ if (isset($_SESSION['id'])) {// tarkistetaan id
                     $type = $_GET["type"];
                     $cond = "vapaa";
                     $cond = $_GET["cond"];
-                    $sql = "UPDATE laite SET Sarjanumero = $serial, Nimi = '$devName', Vuokra_hinta = $price, Laitetyyppi = '$type', varaus_tila = '$cond' WHERE LaiteID = $modID";
+                    $huolto = $_GET["huolto"];
+                    $sql = "UPDATE laite SET Sarjanumero = $serial, Nimi = '$devName', Vuokra_hinta = $price, Laitetyyppi = '$type', varaus_tila = '$cond', seuraavahuolto = '$huolto' WHERE LaiteID = $modID";
 
                     if ($conn->query($sql) === TRUE) {
                         echo "Laite päivitetty <br><br>";

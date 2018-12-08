@@ -8,11 +8,13 @@ if (isset($_SESSION['id'])) {// tarkistetaan id
     $result = mysqli_query($conn, $sql);
     while ($row = $result->fetch_assoc()) {
         $name = $row["tunnus"];
+        $password = $row["salasana"];
+        $email = $row["email"];
     }
 ?>
 <html>
     <head>
-        <title>Main</title>
+        <title>User</title>
         <link rel="stylesheet" type="text/css" href="style.css">
     </head>
     <body>
@@ -21,13 +23,19 @@ if (isset($_SESSION['id'])) {// tarkistetaan id
             <div class="column side">
             </div>
                  <div class="column middle">
-        <h1>KÄYTTÄJÄN ETUSIVU</h1>
+    <h1>ETUSIVU</h1>
+
 
 
         <?php
             require_once("db.inc");
 
-  
+            echo "<br> tunnus: $name";
+            echo "<br> salasana: $password";
+            echo "<br> email: $email";
+
+
+ 
         ?>
 </div>
   <div class="column side">

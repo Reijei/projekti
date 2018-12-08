@@ -38,7 +38,8 @@ if (isset($_SESSION['id'])) {// tarkistetaan id
             require_once("db.inc");
 
             if (isset($_GET["Hae"])){
-                $query = "SELECT HuoltoID, LaiteID, huoltopvm, sisaisethuomiot FROM huoltohistoria";
+                $serial= $_GET["serial"];
+                $query = "SELECT HuoltoID, LaiteID, huoltopvm, sisaisethuomiot FROM huoltohistoria WHERE LaiteID = '$serial'";
 				$tulos = mysqli_query($conn, $query);
 				if ( !$tulos ){
 					echo "Ei laitteita" . mysqli_error($conn);
