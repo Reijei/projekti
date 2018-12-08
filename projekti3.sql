@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.9
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Nov 28, 2018 at 08:57 AM
--- Server version: 5.7.21
--- PHP Version: 5.6.35
+-- Generation Time: Dec 08, 2018 at 11:38 AM
+-- Server version: 5.7.23
+-- PHP Version: 7.2.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,8 +19,15 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
+-- Database: `asd`
+--
+CREATE DATABASE IF NOT EXISTS `asd` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `asd`;
+--
 -- Database: `projekti3`
 --
+CREATE DATABASE IF NOT EXISTS `projekti3` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `projekti3`;
 
 -- --------------------------------------------------------
 
@@ -34,16 +41,17 @@ CREATE TABLE IF NOT EXISTS `admin` (
   `tunnus` varchar(25) NOT NULL,
   `salasana` varchar(25) NOT NULL,
   `email` varchar(25) NOT NULL,
-  `usertype` varchar(10) NOT NULL,
+  `usertype` varchar(20) NOT NULL,
   PRIMARY KEY (`admin_ID`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `admin`
 --
 
 INSERT INTO `admin` (`admin_ID`, `tunnus`, `salasana`, `email`, `usertype`) VALUES
-(1, 'admin', 'salasana', 'email@testi.fi', 'admin');
+(1, 'admin', 'salasana', 'email@testi.fi', 'admin'),
+(3, 'user', 'user', 'user@gmail.com', 'user');
 
 -- --------------------------------------------------------
 
@@ -61,20 +69,41 @@ CREATE TABLE IF NOT EXISTS `asiakas` (
   `toimipaikka` varchar(25) NOT NULL,
   `verkkolaskutunnus` varchar(11) NOT NULL,
   `operaattori` varchar(25) NOT NULL,
-  `laskutusväli` varchar(25) NOT NULL,
+  `laskutusvali` varchar(25) NOT NULL,
   `vakuuttaja` varchar(25) NOT NULL,
-  `yhteyshenkilö` varchar(25) NOT NULL,
-  PRIMARY KEY (`AsiakasID`),
-  UNIQUE KEY `AsiakasID` (`AsiakasID`),
-  UNIQUE KEY `AsiakasID_2` (`AsiakasID`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+  `yhteyshenkilo` varchar(25) NOT NULL,
+  PRIMARY KEY (`AsiakasID`)
+) ENGINE=MyISAM AUTO_INCREMENT=283 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `asiakas`
 --
 
-INSERT INTO `asiakas` (`AsiakasID`, `Asiakas`, `Asiakasluokitus`, `Laskutusosoite`, `postinumero`, `toimipaikka`, `verkkolaskutunnus`, `operaattori`, `laskutusväli`, `vakuuttaja`, `yhteyshenkilö`) VALUES
-(1, 'name', 'luokitus', 'osoite', 'postinumero', 'toimipaikka', '123', 'operaattori', 'laskutusvali', 'vakuuttaja', 'yhteyshenkilo');
+INSERT INTO `asiakas` (`AsiakasID`, `Asiakas`, `Asiakasluokitus`, `Laskutusosoite`, `postinumero`, `toimipaikka`, `verkkolaskutunnus`, `operaattori`, `laskutusvali`, `vakuuttaja`, `yhteyshenkilo`) VALUES
+(256, 'Industless Oy', 'Asiakas', 'Viistokuja 3', '70200', 'Kuopio', '12345', 'OP', '30', 'Industless', 'Matti Meikäläinen');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `asiakastilaus`
+--
+
+DROP TABLE IF EXISTS `asiakastilaus`;
+CREATE TABLE IF NOT EXISTS `asiakastilaus` (
+  `asiakasNimi` varchar(25) NOT NULL,
+  `asiakasSposti` varchar(25) NOT NULL,
+  `asiakasYritys` varchar(25) NOT NULL,
+  `asiakasYritysOsoite` varchar(25) NOT NULL,
+  `asiakasHakemus` varchar(500) NOT NULL,
+  PRIMARY KEY (`asiakasNimi`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `asiakastilaus`
+--
+
+INSERT INTO `asiakastilaus` (`asiakasNimi`, `asiakasSposti`, `asiakasYritys`, `asiakasYritysOsoite`, `asiakasHakemus`) VALUES
+('Industless Oy', 'Industlessoy@gmail.com', 'Savonia AMK', 'Opistotie 2', 'Tilauksen tiedot.');
 
 -- --------------------------------------------------------
 
@@ -88,22 +117,18 @@ CREATE TABLE IF NOT EXISTS `huoltohistoria` (
   `LaiteID` int(25) NOT NULL,
   `Huoltopvm` date NOT NULL,
   `Sisaisethuomiot` text NOT NULL,
+  `Huom` text NOT NULL,
   PRIMARY KEY (`HuoltoID`),
   KEY `LaiteID` (`LaiteID`)
-) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=5033 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `huoltohistoria`
 --
 
-INSERT INTO `huoltohistoria` (`HuoltoID`, `LaiteID`, `Huoltopvm`, `Sisaisethuomiot`) VALUES
-(2, 2, '2018-12-12', '2'),
-(3, 2, '2018-12-12', ''),
-(5, 2, '2018-12-12', 'asd'),
-(1, 2, '2018-12-12', 'asd'),
-(6, 2, '2018-12-12', 'asd'),
-(7, 2, '2018-12-12', 'asd'),
-(8, 2, '2018-12-12', 'asd');
+INSERT INTO `huoltohistoria` (`HuoltoID`, `LaiteID`, `Huoltopvm`, `Sisaisethuomiot`, `Huom`) VALUES
+(5031, 2, '2018-11-20', 'Ei huomioitavaa', 'Ei huomioitavaa'),
+(5032, 3, '2018-12-12', 'sdf', 'sdf');
 
 -- --------------------------------------------------------
 
@@ -119,46 +144,19 @@ CREATE TABLE IF NOT EXISTS `laite` (
   `Vuokra_hinta` decimal(10,0) NOT NULL,
   `Laitetyyppi` varchar(25) NOT NULL,
   `varaus_tila` varchar(25) NOT NULL,
+  `seuraavahuolto` varchar(10) DEFAULT NULL,
   PRIMARY KEY (`LaiteID`)
-) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `laite`
 --
 
-INSERT INTO `laite` (`LaiteID`, `Sarjanumero`, `Nimi`, `Vuokra_hinta`, `Laitetyyppi`, `varaus_tila`) VALUES
-(1, 1, '1', '1', '1', 'vapaa'),
-(2, 123, 'esimnimi', '666', 'pora', 'vapaa'),
-(3, 1234, 'nimi', '6969', 'perkele', 'vapaa'),
-(6, 123444, 'niminmimi', '666', 'hieno', 'vapaa'),
-(7, 123425, 'esimnimi', '666', 'hieno', 'vapaa'),
-(8, 123123123, 'esimnimi', '55555', 'hieno', 'vapaa'),
-(9, 111111, 'asdasdasd', '123123123', 'asd', 'varattu'),
-(10, 33434, 'asd', '5', 'asd', 'vapaa');
---
---
--- --------------------------------------------------------
-
---
--- Table structure for table `asiakastilaus`
---
-
-CREATE TABLE IF NOT EXISTS `asiakastilaus` (
-  `asiakasNimi` varchar(25) NOT NULL,
-  `asiakasSposti` varchar(25) NOT NULL,
-  `asiakasYritys` varchar(25) NOT NULL,
-  `asiakasYritysOsoite` varchar(25) NOT NULL,
-  `asiakasHakemus` varchar(500) NOT NULL,
-  PRIMARY KEY (`asiakasNimi`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `asiakastilaus`
---
-
-INSERT INTO `asiakastilaus` (`asiakasNimi`, `asiakasSposti`, `asiakasYritys`, `asiakasYritysOsoite`, `asiakasHakemus`) VALUES
-('ABC', 'ABC@ABC.ABC', 'Savonia AMK', 'Opistotie 2', 'Tilaisin puhdistimen.');
-
+INSERT INTO `laite` (`LaiteID`, `Sarjanumero`, `Nimi`, `Vuokra_hinta`, `Laitetyyppi`, `varaus_tila`, `seuraavahuolto`) VALUES
+(1, 60135, 'Puhdistin', '500', 'Puhdistin', 'vapaa', '2018-20-20'),
+(2, 6049, 'Puhdistin', '305', 'Puhdistin', 'Vapaa', ''),
+(10, 5031, 'Laite', '333', 'Laite', 'vapaa', NULL),
+(11, 301648, 'Laite', '150', 'Laite', 'vapaa', NULL);
 
 -- --------------------------------------------------------
 
@@ -168,7 +166,7 @@ INSERT INTO `asiakastilaus` (`asiakasNimi`, `asiakasSposti`, `asiakasYritys`, `a
 
 DROP TABLE IF EXISTS `tilaus`;
 CREATE TABLE IF NOT EXISTS `tilaus` (
-  `TilausID` int(11) NOT NULL,
+  `TilausID` int(11) NOT NULL AUTO_INCREMENT,
   `AsiakasID` int(11) NOT NULL,
   `LaiteID` int(11) NOT NULL,
   `alkpvm` int(11) NOT NULL,
@@ -176,17 +174,25 @@ CREATE TABLE IF NOT EXISTS `tilaus` (
   `tilaajan_puh` int(11) NOT NULL,
   `kesto` varchar(25) NOT NULL,
   `kohteen_nimi` varchar(25) NOT NULL,
-  `kohteen_osoite` varchar(25) NOT NULL,
+  `kohteen_osoite` varchar(25) DEFAULT NULL,
   `postinumero` int(11) NOT NULL,
   `toimipaikka` varchar(25) NOT NULL,
   `kohteen_yht` varchar(25) NOT NULL,
-  `yhteyshenkilo_puh` int(11) NOT NULL,
+  `yhteyshenkilo_puh` int(11) DEFAULT NULL,
   `osasto` varchar(25) NOT NULL,
   `tilatunniste` varchar(25) NOT NULL,
   PRIMARY KEY (`TilausID`),
   KEY `AsiakasID` (`AsiakasID`),
   KEY `LaiteID` (`LaiteID`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tilaus`
+--
+
+INSERT INTO `tilaus` (`TilausID`, `AsiakasID`, `LaiteID`, `alkpvm`, `loppupvm`, `tilaajan_puh`, `kesto`, `kohteen_nimi`, `kohteen_osoite`, `postinumero`, `toimipaikka`, `kohteen_yht`, `yhteyshenkilo_puh`, `osasto`, `tilatunniste`) VALUES
+(1, 3, 1, 234, 234, 234, '234', '234', NULL, 234, '234', '234', NULL, '234', '234'),
+(2, 282, 7, 123, 123, 123, '123', 'asd', NULL, 123, 'asd', '123', NULL, '123', '123');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

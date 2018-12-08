@@ -30,11 +30,9 @@ if (isset($_SESSION['id'])) {// tarkistetaan id
         <?php
             require_once("db.inc");
 
-            echo "id: $id";
-            echo "<br> tunnus: $name";
-            echo "<br> salasana: $password";
-            echo "<br> email: $email";
-
+            echo "<br> Käyttäjätunnus: $name";
+            echo "<br> Salasana: $password";
+            echo "<br> Sähköposti: $email";
 
  
         ?>
